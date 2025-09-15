@@ -17,7 +17,7 @@ class Evently extends StatelessWidget {
       designSize: Size(393, 841),
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
-        initialRoute: RoutesManger.register,
+        initialRoute: RoutesManger.login,
         onGenerateRoute: RoutesManger.router,
         theme: ThemeManger.light,
         darkTheme: ThemeManger.dark,

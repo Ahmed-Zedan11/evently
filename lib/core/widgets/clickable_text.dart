@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +17,7 @@ class ClickableText extends StatelessWidget {
           title,
           style: GoogleFonts.inter(
               fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
               color: ColorsManger.blue,
               decoration: TextDecoration.underline,
               decorationColor: ColorsManger.blue),

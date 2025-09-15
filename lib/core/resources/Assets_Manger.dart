@@ -1,3 +1,4 @@
 abstract class AssetsManger {
-  static const String evently_logo = "assets/images/Logo.png";
+  static const String eventlyLogo = "assets/images/Logo.png";
+  static const String googleLogo = "assets/images/Google_icon.png";
 }

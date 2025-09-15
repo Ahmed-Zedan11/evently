@@ -1,8 +1,4 @@
 class Validator {
-  final String _emailPattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
-  final String _passwordPattern =
-      r'^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d!@#\$%^&*(),.?":{}|<>]{6,}$';
-
   static String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {
       return "Please, enter your name";

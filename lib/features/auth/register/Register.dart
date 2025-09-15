@@ -4,7 +4,6 @@ import 'package:evently/core/routes_manger/Routes_Manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
-import 'package:evently/features/auth/login/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,7 +47,7 @@ class _RegisterState extends State<Register> {
             key: formKey,
             child: Column(
               children: [
-                Image.asset(AssetsManger.evently_logo,
+                Image.asset(AssetsManger.eventlyLogo,
                     height: 186.h, width: 136.w),
                 SizedBox(height: 24.h),
                 CustomTextField(
