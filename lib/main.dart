@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'config/theme/ThemeManger.dart';
-import 'core/routes_manger/Routes_Manger.dart';
+import 'config/theme/theme_manger.dart';
+import 'core/routes_manger/routes_manger.dart';
 
 void main() {
   runApp(const Evently());
@@ -17,7 +17,7 @@ class Evently extends StatelessWidget {
       designSize: Size(393, 841),
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
-        initialRoute: RoutesManger.login,
+        initialRoute: RoutesManger.mainLayout,
         onGenerateRoute: RoutesManger.router,
         theme: ThemeManger.light,
         darkTheme: ThemeManger.dark,

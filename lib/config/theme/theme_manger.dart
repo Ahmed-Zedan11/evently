@@ -5,12 +5,27 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ThemeManger {
   static final ThemeData light = ThemeData(
+      bottomAppBarTheme: BottomAppBarTheme(
+        color: ColorsManger.blue,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.transparent,
+      ),
       textTheme: TextTheme(
-          bodySmall: GoogleFonts.inter(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w500,
-        color: ColorsManger.black,
-      )),
+        bodySmall: GoogleFonts.inter(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          color: ColorsManger.black,
+        ),
+        bodyMedium: GoogleFonts.inter(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.bold,
+            color: ColorsManger.black),
+        displaySmall: GoogleFonts.inter(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.bold,
+            color: ColorsManger.blue),
+      ),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: ColorsManger.blue,
       ),
