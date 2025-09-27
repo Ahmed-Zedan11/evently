@@ -25,7 +25,6 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
       body: tabs[currentIndex],
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.all(8),

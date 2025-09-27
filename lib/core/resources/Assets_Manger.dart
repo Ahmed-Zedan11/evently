@@ -10,4 +10,5 @@ abstract class AssetsManger {
   static const String holiday = "assets/images/holiday.png";
   static const String meeting = "assets/images/meeting.png";
   static const String workShop = "assets/images/workshop.png";
+  static const String route = "assets/images/route.png";
 }

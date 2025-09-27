@@ -6,8 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 class ClickableButton extends StatelessWidget {
   final String text;
   final VoidCallback onClick;
+  final Color color;
 
-  const ClickableButton({super.key, required this.text, required this.onClick});
+  const ClickableButton(
+      {super.key,
+      required this.text,
+      required this.onClick,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,7 @@ class ClickableButton extends StatelessWidget {
           height: 56.h,
           width: 361.w,
           decoration: BoxDecoration(
-            color: ColorsManger.blue,
+            color: color,
             borderRadius: BorderRadius.circular(16.r),
           ),
           child: Center(

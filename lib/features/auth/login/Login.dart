@@ -74,7 +74,11 @@ class _LoginState extends State<Login> {
                   ],
                 ),
                 SizedBox(height: 24.h),
-                ClickableButton(text: "login", onClick: _login),
+                ClickableButton(
+                  text: "login",
+                  onClick: _login,
+                  color: ColorsManger.blue,
+                ),
                 SizedBox(height: 24.h),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text(

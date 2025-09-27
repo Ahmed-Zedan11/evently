@@ -12,6 +12,14 @@ class ThemeManger {
         backgroundColor: Colors.transparent,
       ),
       textTheme: TextTheme(
+        headlineSmall: GoogleFonts.inter(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: ColorsManger.blue),
+        headlineMedium: GoogleFonts.inter(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: ColorsManger.black),
         bodySmall: GoogleFonts.inter(
           fontSize: 16.sp,
           fontWeight: FontWeight.w500,

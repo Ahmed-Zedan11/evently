@@ -1,4 +1,5 @@
 import 'package:evently/core/resources/Assets_Manger.dart';
+import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/resources/validator.dart';
 import 'package:evently/core/routes_manger/routes_manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
@@ -101,6 +102,7 @@ class _RegisterState extends State<Register> {
                 ClickableButton(
                   text: "Create Account",
                   onClick: _createAccount,
+                  color: ColorsManger.blue,
                 ),
                 SizedBox(height: 16.h),
                 Row(

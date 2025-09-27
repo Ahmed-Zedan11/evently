@@ -18,6 +18,8 @@ class EventItem extends StatelessWidget {
       width: 361.w,
       height: 203.h,
       decoration: BoxDecoration(
+        border: Border.all(width: 1.w, color: ColorsManger.blue),
+        borderRadius: BorderRadius.circular(16.r),
         image: DecorationImage(
             image: AssetImage(
               AssetsManger.sports,

@@ -1,6 +1,6 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/widgets/custom_tab_bar.dart';
-import 'package:evently/features/main_layout/home_tab/event_item.dart';
+import 'package:evently/core/widgets/event_item.dart';
 import 'package:evently/models/category_model.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:flutter/material.dart';
@@ -106,8 +106,8 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
           Expanded(
-              child: Padding(
-            padding: REdgeInsets.only(bottom: 100),
+              child: Container(
+            margin: REdgeInsets.symmetric(horizontal: 16),
             child: ListView.builder(
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) => EventItem(
