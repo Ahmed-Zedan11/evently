@@ -41,7 +41,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
                       unSelectedTabBGColor: widget.unSelectedTabBGColor,
                       unSelectedTabFGColor: widget.unSelectedTabFGColor,
                       isSelected: selectedIndex ==
-                          CategoryModel.categoriesWithAll.indexOf(category),
+                          widget.categoryType.indexOf(category),
                       category: category,
                     ))
                 .toList()));

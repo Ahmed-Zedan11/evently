@@ -33,6 +33,14 @@ class ThemeManger {
             fontSize: 14.sp,
             fontWeight: FontWeight.bold,
             color: ColorsManger.blue),
+        displayMedium: GoogleFonts.inter(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+            color: ColorsManger.black),
+        displayLarge: GoogleFonts.inter(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+            color: ColorsManger.blue),
       ),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: ColorsManger.blue,

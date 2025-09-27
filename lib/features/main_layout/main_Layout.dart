@@ -1,4 +1,5 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
+import 'package:evently/core/routes_manger/routes_manger.dart';
 import 'package:evently/features/main_layout/favourite_tab/favourite_tab.dart';
 import 'package:evently/features/main_layout/home_tab/home_tab.dart';
 import 'package:evently/features/main_layout/map_tab/map_tap.dart';
@@ -83,5 +84,7 @@ class _MainLayoutState extends State<MainLayout> {
     setState(() {});
   }
 
-  void _onFABPressed() {}
+  void _onFABPressed() {
+    Navigator.pushNamed(context, RoutesManger.createEvent);
+  }
 }

@@ -46,5 +46,34 @@ class CategoryModel {
     CategoryModel(id: "9", icon: Icons.book, name: "Books Shop", imagePath: ""),
   ];
 
-  static var categoryType;
+  static List<CategoryModel> categoriesWithoutAll = [
+    CategoryModel(id: "1", icon: Icons.sports, name: "Sports", imagePath: ""),
+    CategoryModel(
+        id: "2", icon: Icons.cake_rounded, name: "Birth Day", imagePath: ""),
+    CategoryModel(
+        id: "3",
+        icon: Icons.meeting_room_rounded,
+        name: "Meeting",
+        imagePath: ""),
+    CategoryModel(
+        id: "4", icon: Icons.gamepad_rounded, name: "Gaming", imagePath: ""),
+    CategoryModel(
+        id: "5", icon: Icons.food_bank_rounded, name: "Eating", imagePath: ""),
+    CategoryModel(
+        id: "6",
+        icon: Icons.holiday_village_rounded,
+        name: "Holiday",
+        imagePath: ""),
+    CategoryModel(
+        id: "7",
+        icon: Icons.water_drop_sharp,
+        name: "Exhibition",
+        imagePath: ""),
+    CategoryModel(
+        id: "8",
+        icon: Icons.workspaces_filled,
+        name: "Work Shop",
+        imagePath: ""),
+    CategoryModel(id: "9", icon: Icons.book, name: "Books Shop", imagePath: ""),
+  ];
 }
