@@ -19,110 +19,108 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                color: ColorsManger.blue,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(24.r),
-                    bottomRight: Radius.circular(24.r))),
-            width: double.infinity,
-            child: SafeArea(
-              bottom: false,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Welcome Back ✨",
-                              style: GoogleFonts.inter(
-                                  fontSize: 14.sp, color: ColorsManger.white),
-                            ),
-                            Text(
-                              "Ahmed Zedan",
-                              style: GoogleFonts.inter(
-                                  fontSize: 24.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorsManger.white),
-                            )
-                          ],
-                        ),
-                        Spacer(),
-                        Icon(Icons.light_mode_outlined,
-                            size: 24.sp, color: ColorsManger.white),
-                        SizedBox(width: 5.w),
-                        Card(
-                          color: ColorsManger.white,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "EN",
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(24.r),
+                  bottomRight: Radius.circular(24.r))),
+          width: double.infinity,
+          child: SafeArea(
+            bottom: false,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Welcome Back ✨",
+                            style: GoogleFonts.inter(
+                                fontSize: 14.sp, color: ColorsManger.white),
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.location_on_outlined,
-                          size: 24.sp,
-                          color: ColorsManger.white,
+                          Text(
+                            "Ahmed Zedan",
+                            style: GoogleFonts.inter(
+                                fontSize: 24.sp,
+                                fontWeight: FontWeight.bold,
+                                color: ColorsManger.white),
+                          )
+                        ],
+                      ),
+                      Spacer(),
+                      Icon(Icons.light_mode_outlined,
+                          size: 24.sp, color: ColorsManger.white),
+                      SizedBox(width: 5.w),
+                      Card(
+                        color: ColorsManger.white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "EN",
+                            style: Theme.of(context).textTheme.displaySmall,
+                          ),
                         ),
-                        SizedBox(width: 4.w),
-                        Text(
-                          "Cairo , Egypt",
-                          style: GoogleFonts.inter(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: ColorsManger.white),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
-                  SizedBox(height: 8.h),
-                  CustomTabBar(
-                    selectedTabBGColor: ColorsManger.white,
-                    selectedTabFGColor: ColorsManger.blue,
-                    unSelectedTabBGColor: Colors.transparent,
-                    unSelectedTabFGColor: ColorsManger.white,
-                    categoryType: CategoryModel.categoriesWithAll,
+                ),
+                SizedBox(height: 8.h),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 24.sp,
+                        color: ColorsManger.white,
+                      ),
+                      SizedBox(width: 4.w),
+                      Text(
+                        "Cairo , Egypt",
+                        style: GoogleFonts.inter(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                            color: ColorsManger.white),
+                      )
+                    ],
                   ),
-                ],
-              ),
+                ),
+                SizedBox(height: 8.h),
+                CustomTabBar(
+                  selectedTabBGColor: ColorsManger.white,
+                  selectedTabFGColor: ColorsManger.blue,
+                  unSelectedTabBGColor: Colors.transparent,
+                  unSelectedTabFGColor: ColorsManger.white,
+                  categoryType: CategoryModel.categoriesWithAll,
+                ),
+              ],
             ),
           ),
-          Expanded(
-              child: Container(
-            margin: REdgeInsets.symmetric(horizontal: 16),
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemBuilder: (context, index) => EventItem(
-                event: EventModel(
-                    time: TimeOfDay.now(),
-                    title: "this a birthday party",
-                    description: "description",
-                    date: DateTime.now(),
-                    category: CategoryModel.categoriesWithAll[1]),
-              ),
-              itemCount: 10,
+        ),
+        Expanded(
+            child: Container(
+          margin: REdgeInsets.symmetric(horizontal: 16),
+          child: ListView.builder(
+            padding: REdgeInsets.only(top: 0, bottom: 100),
+            itemBuilder: (context, index) => EventItem(
+              event: EventModel(
+                  time: TimeOfDay.now(),
+                  title: "this a birthday party",
+                  description: "description",
+                  date: DateTime.now(),
+                  category: CategoryModel.categoriesWithAll[1]),
             ),
-          )),
-        ],
-      ),
+            itemCount: 10,
+          ),
+        )),
+      ],
     );
   }
 }

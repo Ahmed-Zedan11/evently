@@ -26,6 +26,7 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: tabs[currentIndex],
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.all(8),
@@ -66,7 +67,6 @@ class _MainLayoutState extends State<MainLayout> {
       floatingActionButton: FloatingActionButton(
         onPressed: _onFABPressed,
         elevation: 0,
-        backgroundColor: ColorsManger.blue,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(75.r),
             side: BorderSide(color: ColorsManger.white, width: 5.w)),

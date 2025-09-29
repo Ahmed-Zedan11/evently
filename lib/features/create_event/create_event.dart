@@ -1,3 +1,4 @@
+import 'package:evently/core/resources/Assets_Manger.dart';
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
@@ -52,13 +53,14 @@ class _CreateEventState extends State<CreateEvent> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EventItem(
-                  event: EventModel(
-                      time: TimeOfDay.now(),
-                      title: "this a birthday party",
-                      description: "description",
-                      date: DateTime.now(),
-                      category: CategoryModel.categoriesWithAll[1])),
+              Container(
+                width: 361.w,
+                height: 203.h,
+                decoration: BoxDecoration(
+                    image:
+                        DecorationImage(image: AssetImage(AssetsManger.sports)),
+                    borderRadius: BorderRadius.circular(16.r)),
+              ),
               SizedBox(
                 height: 16.h,
               ),
@@ -106,7 +108,10 @@ class _CreateEventState extends State<CreateEvent> {
               ),
               Row(
                 children: [
-                  Icon(Icons.date_range),
+                  Icon(
+                    Icons.date_range,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   SizedBox(
                     width: 10.w,
                   ),
@@ -129,7 +134,10 @@ class _CreateEventState extends State<CreateEvent> {
               ),
               Row(
                 children: [
-                  Icon(Icons.timelapse),
+                  Icon(
+                    Icons.timelapse,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   SizedBox(
                     width: 10.w,
                   ),
@@ -172,7 +180,7 @@ class _CreateEventState extends State<CreateEvent> {
                               borderRadius: BorderRadius.circular(8.r)),
                           child: Icon(
                             Icons.location_searching_rounded,
-                            color: ColorsManger.white,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                         SizedBox(

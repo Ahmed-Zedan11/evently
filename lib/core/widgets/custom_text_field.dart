@@ -41,10 +41,6 @@ class CustomTextField extends StatelessWidget {
             size: 24.sp,
           ),
           labelText: labelText,
-          labelStyle: GoogleFonts.inter(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
-          ),
           suffixIcon: suffixIconType,
         ));
   }

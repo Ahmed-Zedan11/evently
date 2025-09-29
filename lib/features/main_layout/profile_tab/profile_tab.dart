@@ -21,48 +21,46 @@ class ProfileTab extends StatelessWidget {
                 borderRadius:
                     BorderRadius.only(bottomLeft: Radius.circular(64.r)),
                 color: ColorsManger.blue),
-            child: SafeArea(
-              child: Row(
-                children: [
-                  Container(
-                    width: 124.w,
-                    height: 124.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(1000.r),
-                          bottomRight: Radius.circular(1000.r),
-                          bottomLeft: Radius.circular(1000.r),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage(AssetsManger.route))),
-                  ),
-                  SizedBox(
-                    width: 16.w,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Ahmed Zedan",
-                        style: GoogleFonts.inter(
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.bold,
-                            color: ColorsManger.white),
+            child: Row(
+              children: [
+                Container(
+                  width: 124.w,
+                  height: 124.h,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(1000.r),
+                        bottomRight: Radius.circular(1000.r),
+                        bottomLeft: Radius.circular(1000.r),
                       ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      Text(
-                        "AhmedZedan@gmail.com",
-                        style: GoogleFonts.inter(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            color: ColorsManger.white),
-                      )
-                    ],
-                  )
-                ],
-              ),
+                      image: DecorationImage(
+                          image: AssetImage(AssetsManger.route))),
+                ),
+                SizedBox(
+                  width: 16.w,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Ahmed Zedan",
+                      style: GoogleFonts.inter(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.bold,
+                          color: ColorsManger.white),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      "AhmedZedan@gmail.com",
+                      style: GoogleFonts.inter(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: ColorsManger.white),
+                    )
+                  ],
+                )
+              ],
             ),
           ),
           SizedBox(
@@ -79,29 +77,32 @@ class ProfileTab extends StatelessWidget {
               option2: "Dark",
               displayedDrobDown: "Light"),
           Spacer(),
-          GestureDetector(
-            onTap: () {},
-            child: Card(
-              color: ColorsManger.red,
-              margin: REdgeInsets.symmetric(horizontal: 16, vertical: 27),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.r)),
-              child: Padding(
-                padding: REdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.logout,
-                      size: 24.sp,
-                      color: ColorsManger.white,
-                    ),
-                    SizedBox(
-                      width: 8.w,
-                    ),
-                    Text("Logout",
-                        style: GoogleFonts.inter(
-                            fontSize: 20.sp, color: ColorsManger.white))
-                  ],
+          Padding(
+            padding: REdgeInsets.only(bottom: 99),
+            child: GestureDetector(
+              onTap: () {},
+              child: Card(
+                color: ColorsManger.red,
+                margin: REdgeInsets.symmetric(horizontal: 16, vertical: 27),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.r)),
+                child: Padding(
+                  padding: REdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.logout,
+                        size: 24.sp,
+                        color: ColorsManger.white,
+                      ),
+                      SizedBox(
+                        width: 8.w,
+                      ),
+                      Text("Logout",
+                          style: GoogleFonts.inter(
+                              fontSize: 20.sp, color: ColorsManger.white))
+                    ],
+                  ),
                 ),
               ),
             ),
