@@ -1,6 +1,7 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/resources/assets_manger.dart';
 import 'package:evently/features/main_layout/profile_tab/custom_drop_down.dart';
+import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,14 +68,14 @@ class ProfileTab extends StatelessWidget {
             height: 24.h,
           ),
           CustomDropDown(
-              title: "Language",
+              title: AppLocalizations.of(context).language,
               option1: "English",
               option2: "عربي",
               displayedDrobDown: "English"),
           CustomDropDown(
-              title: "Theme",
-              option1: "Light",
-              option2: "Dark",
+              title: AppLocalizations.of(context).theme,
+              option1: AppLocalizations.of(context).light,
+              option2: AppLocalizations.of(context).dark,
               displayedDrobDown: "Light"),
           Spacer(),
           Padding(
@@ -98,7 +99,7 @@ class ProfileTab extends StatelessWidget {
                       SizedBox(
                         width: 8.w,
                       ),
-                      Text("Logout",
+                      Text(AppLocalizations.of(context).logout,
                           style: GoogleFonts.inter(
                               fontSize: 20.sp, color: ColorsManger.white))
                     ],

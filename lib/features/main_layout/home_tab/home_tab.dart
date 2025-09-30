@@ -1,6 +1,7 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/widgets/custom_tab_bar.dart';
 import 'package:evently/core/widgets/event_item.dart';
+import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/models/category_model.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _HomeTabState extends State<HomeTab> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Welcome Back ✨",
+                            AppLocalizations.of(context).welcome_back,
                             style: GoogleFonts.inter(
                                 fontSize: 14.sp, color: ColorsManger.white),
                           ),
@@ -98,7 +99,7 @@ class _HomeTabState extends State<HomeTab> {
                   selectedTabFGColor: ColorsManger.blue,
                   unSelectedTabBGColor: Colors.transparent,
                   unSelectedTabFGColor: ColorsManger.white,
-                  categoryType: CategoryModel.categoriesWithAll,
+                  categoryType: CategoryModel.categoriesWithAll(context),
                 ),
               ],
             ),
@@ -115,7 +116,7 @@ class _HomeTabState extends State<HomeTab> {
                   title: "this a birthday party",
                   description: "description",
                   date: DateTime.now(),
-                  category: CategoryModel.categoriesWithAll[1]),
+                  category: CategoryModel.categoriesWithAll(context)[1]),
             ),
             itemCount: 10,
           ),

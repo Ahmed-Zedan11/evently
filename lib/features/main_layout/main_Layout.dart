@@ -4,6 +4,7 @@ import 'package:evently/features/main_layout/favourite_tab/favourite_tab.dart';
 import 'package:evently/features/main_layout/home_tab/home_tab.dart';
 import 'package:evently/features/main_layout/map_tab/map_tap.dart';
 import 'package:evently/features/main_layout/profile_tab/profile_tab.dart';
+import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -45,22 +46,22 @@ class _MainLayoutState extends State<MainLayout> {
               BottomNavigationBarItem(
                 icon:
                     Icon(currentIndex == 0 ? Icons.home : Icons.home_outlined),
-                label: "Home",
+                label: AppLocalizations.of(context).home,
               ),
               BottomNavigationBarItem(
                   icon: Icon(currentIndex == 1
                       ? Icons.location_on
                       : Icons.location_on_outlined),
-                  label: "Map"),
+                  label: AppLocalizations.of(context).map),
               BottomNavigationBarItem(
                   icon: Icon(currentIndex != 2
                       ? Icons.favorite_outline
                       : Icons.favorite_rounded),
-                  label: "Favourite"),
+                  label: AppLocalizations.of(context).favourite),
               BottomNavigationBarItem(
                   icon: Icon(
                       currentIndex == 3 ? Icons.person : Icons.person_outline),
-                  label: "profile"),
+                  label: AppLocalizations.of(context).profile),
             ]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

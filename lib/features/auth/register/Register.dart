@@ -5,6 +5,7 @@ import 'package:evently/core/routes_manger/routes_manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
+import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,7 +38,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Register")),
+        title: Center(child: Text(AppLocalizations.of(context).register)),
       ),
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -54,13 +55,13 @@ class _RegisterState extends State<Register> {
                     controller: _nameController,
                     validator: Validator.validateName,
                     prefixIconType: Icons.person_2_rounded,
-                    labelText: "Name"),
+                    labelText: AppLocalizations.of(context).name),
                 SizedBox(height: 16.h),
                 CustomTextField(
                   controller: _emailController,
                   validator: Validator.validateEmail,
                   prefixIconType: Icons.email_rounded,
-                  labelText: "Email",
+                  labelText: AppLocalizations.of(context).email,
                   keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: 16.h),
@@ -69,7 +70,7 @@ class _RegisterState extends State<Register> {
                   validator: Validator.validatePassword,
                   isSecure: securedPassword,
                   prefixIconType: Icons.lock,
-                  labelText: "Password",
+                  labelText: AppLocalizations.of(context).password,
                   suffixIconType: IconButton(
                       onPressed: () {
                         securedPassword = !securedPassword;
@@ -87,7 +88,7 @@ class _RegisterState extends State<Register> {
                       input, _passwordController.text),
                   isSecure: securedRePassword,
                   prefixIconType: Icons.lock,
-                  labelText: "Re Password",
+                  labelText: AppLocalizations.of(context).re_password,
                   suffixIconType: IconButton(
                       onPressed: () {
                         securedRePassword = !securedRePassword;
@@ -100,7 +101,7 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 16.h),
                 ClickableButton(
-                  text: "Create Account",
+                  text: AppLocalizations.of(context).create_account,
                   onClick: _createAccount,
                   color: ColorsManger.blue,
                 ),
@@ -109,12 +110,12 @@ class _RegisterState extends State<Register> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account?",
+                      AppLocalizations.of(context).already_have_account,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     SizedBox(width: 8.w),
                     ClickableText(
-                        title: "Login",
+                        title: AppLocalizations.of(context).login,
                         onClick: () {
                           Navigator.pushReplacementNamed(
                               context, RoutesManger.login);

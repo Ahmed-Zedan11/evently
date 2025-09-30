@@ -5,6 +5,7 @@ import 'package:evently/core/routes_manger/Routes_Manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
+import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,7 +46,7 @@ class _LoginState extends State<Login> {
                       width: 186.w, height: 136.h),
                   CustomTextField(
                     prefixIconType: Icons.email_rounded,
-                    labelText: 'Email',
+                    labelText: AppLocalizations.of(context).email,
                     validator: Validator.validateEmail,
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -56,7 +57,7 @@ class _LoginState extends State<Login> {
                     validator: Validator.validatePassword,
                     isSecure: securedPassword,
                     prefixIconType: Icons.lock,
-                    labelText: "Password",
+                    labelText: AppLocalizations.of(context).password,
                     suffixIconType: IconButton(
                         onPressed: () {
                           securedPassword = !securedPassword;
@@ -71,24 +72,28 @@ class _LoginState extends State<Login> {
                   Row(
                     children: [
                       Spacer(),
-                      ClickableText(title: 'Forget Password?', onClick: () {}),
+                      ClickableText(
+                          title: AppLocalizations.of(context)
+                              .forget_password_question,
+                          onClick: () {}),
                     ],
                   ),
                   SizedBox(height: 24.h),
                   ClickableButton(
-                    text: "login",
+                    text: AppLocalizations.of(context).login,
                     onClick: _login,
                     color: ColorsManger.blue,
                   ),
                   SizedBox(height: 24.h),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Text(
-                      "Don't have Account?",
+                      AppLocalizations.of(context).dont_have_account,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     SizedBox(width: 8.w),
                     ClickableText(
-                        title: "Create Account", onClick: _createAccount)
+                        title: AppLocalizations.of(context).create_account,
+                        onClick: _createAccount)
                   ]),
                   SizedBox(height: 24.h),
                   Row(children: [
@@ -101,7 +106,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Text(
-                      "Or",
+                      AppLocalizations.of(context).or,
                       style: GoogleFonts.inter(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
@@ -133,7 +138,7 @@ class _LoginState extends State<Login> {
                             height: 26,
                           ),
                           SizedBox(width: 10.w),
-                          Text("Login with google",
+                          Text(AppLocalizations.of(context).login_with_google,
                               style: GoogleFonts.inter(
                                   fontSize: 20.sp,
                                   fontWeight: FontWeight.w500,

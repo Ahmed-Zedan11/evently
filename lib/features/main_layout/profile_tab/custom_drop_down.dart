@@ -48,6 +48,7 @@ class CustomDropDown extends StatelessWidget {
                   );
                 }).toList(),
                 onChanged: (_) {},
+                iconEnabledColor: ColorsManger.blue,
               )
             ],
           ),

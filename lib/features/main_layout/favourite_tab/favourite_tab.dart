@@ -1,5 +1,6 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/widgets/event_item.dart';
+import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/models/category_model.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class FavouriteTab extends StatelessWidget {
                       size: 24.sp,
                       color: ColorsManger.blue,
                     ),
-                    hintText: "Search for Event",
+                    hintText: AppLocalizations.of(context).search_for_event,
                     hintStyle: GoogleFonts.inter(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
@@ -45,7 +46,7 @@ class FavouriteTab extends StatelessWidget {
                         title: "this a birthday party",
                         description: "description",
                         date: DateTime.now(),
-                        category: CategoryModel.categoriesWithAll[1])),
+                        category: CategoryModel.categoriesWithAll(context)[1])),
                 itemCount: 10),
           ))
         ],
