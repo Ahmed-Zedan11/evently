@@ -6,9 +6,11 @@ import 'package:evently/core/widgets/custom_tab_bar.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/models/category_model.dart';
+import 'package:evently/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CreateEvent extends StatefulWidget {
   const CreateEvent({super.key});
@@ -37,6 +39,8 @@ class _CreateEventState extends State<CreateEvent> {
 
   @override
   Widget build(BuildContext context) {
+    ConfigProvider configProvider = Provider.of<ConfigProvider>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -65,7 +69,10 @@ class _CreateEventState extends State<CreateEvent> {
               ),
               CustomTabBar(
                   selectedTabBGColor: ColorsManger.blue,
-                  selectedTabFGColor: ColorsManger.white,
+                  selectedTabFGColor:
+                      configProvider.currentTheme == ThemeMode.dark
+                          ? ColorsManger.black
+                          : ColorsManger.white,
                   unSelectedTabBGColor: Colors.transparent,
                   unSelectedTabFGColor: ColorsManger.blue,
                   categoryType: CategoryModel.categoriesWithoutAll(context)),

@@ -8,12 +8,14 @@ class CustomDropDown extends StatelessWidget {
       required this.title,
       required this.option1,
       required this.option2,
-      required this.displayedDrobDown});
+      required this.displayedDrobDown,
+      required this.onChanged});
 
   final String title;
   final String option1;
   final String option2;
   final String displayedDrobDown;
+  final void Function(String?) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class CustomDropDown extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                option1,
+                displayedDrobDown,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               Spacer(),
@@ -47,7 +49,7 @@ class CustomDropDown extends StatelessWidget {
                     child: Text(value),
                   );
                 }).toList(),
-                onChanged: (_) {},
+                onChanged: onChanged,
                 iconEnabledColor: ColorsManger.blue,
               )
             ],

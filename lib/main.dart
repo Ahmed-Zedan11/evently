@@ -1,11 +1,17 @@
+import 'package:evently/core/prefs_manager/prefs_manager.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:evently/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'config/theme/theme_manger.dart';
 import 'core/routes_manger/routes_manger.dart';
 
-void main() {
-  runApp(const Evently());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PrefsManager.init;
+  runApp(ChangeNotifierProvider(
+      create: (context) => ConfigProvider(), child: const Evently()));
 }
 
 class Evently extends StatelessWidget {
@@ -13,6 +19,7 @@ class Evently extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ConfigProvider configProvider = Provider.of<ConfigProvider>(context);
     return ScreenUtilInit(
       designSize: Size(393, 841),
       splitScreenMode: true,
@@ -26,9 +33,9 @@ class Evently extends StatelessWidget {
         onGenerateRoute: RoutesManger.router,
         theme: ThemeManger.light,
         darkTheme: ThemeManger.dark,
-        themeMode: ThemeMode.light,
+        themeMode: configProvider.currentTheme,
         debugShowCheckedModeBanner: false,
-        locale: Locale("ar"),
+        locale: configProvider.currentLanguage,
       ),
     );
   }

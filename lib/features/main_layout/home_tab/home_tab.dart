@@ -4,9 +4,11 @@ import 'package:evently/core/widgets/event_item.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/models/category_model.dart';
 import 'package:evently/models/event_model.dart';
+import 'package:evently/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -20,6 +22,7 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    ConfigProvider configProvider = Provider.of<ConfigProvider>(context);
     return Column(
       children: [
         Container(
@@ -56,16 +59,32 @@ class _HomeTabState extends State<HomeTab> {
                         ],
                       ),
                       Spacer(),
-                      Icon(Icons.light_mode_outlined,
-                          size: 24.sp, color: ColorsManger.white),
+                      IconButton(
+                        icon: Icon(
+                            configProvider.currentTheme == ThemeMode.light
+                                ? Icons.light_mode_outlined
+                                : Icons.dark_mode_outlined,
+                            size: 24.sp,
+                            color: ColorsManger.white),
+                        onPressed: () {
+                          configProvider.toggleTheme;
+                        },
+                      ),
                       SizedBox(width: 5.w),
-                      Card(
-                        color: ColorsManger.white,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "EN",
-                            style: Theme.of(context).textTheme.displaySmall,
+                      GestureDetector(
+                        onTap: () {
+                          configProvider.toggleLanguage;
+                        },
+                        child: Card(
+                          color: ColorsManger.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              configProvider.currentLanguage == Locale("en")
+                                  ? "EN"
+                                  : "AR",
+                              style: Theme.of(context).textTheme.displaySmall,
+                            ),
                           ),
                         ),
                       )
@@ -95,8 +114,14 @@ class _HomeTabState extends State<HomeTab> {
                 ),
                 SizedBox(height: 8.h),
                 CustomTabBar(
-                  selectedTabBGColor: ColorsManger.white,
-                  selectedTabFGColor: ColorsManger.blue,
+                  selectedTabBGColor:
+                      configProvider.currentTheme == ThemeMode.dark
+                          ? ColorsManger.blue
+                          : ColorsManger.white,
+                  selectedTabFGColor:
+                      configProvider.currentTheme == ThemeMode.dark
+                          ? ColorsManger.white
+                          : ColorsManger.blue,
                   unSelectedTabBGColor: Colors.transparent,
                   unSelectedTabFGColor: ColorsManger.white,
                   categoryType: CategoryModel.categoriesWithAll(context),
