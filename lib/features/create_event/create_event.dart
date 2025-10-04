@@ -1,3 +1,4 @@
+import 'package:evently/core/extensions/date_time_ex.dart';
 import 'package:evently/core/resources/Assets_Manger.dart';
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
@@ -22,6 +23,8 @@ class CreateEvent extends StatefulWidget {
 class _CreateEventState extends State<CreateEvent> {
   late final TextEditingController descriptionController;
   late final TextEditingController titleController;
+  DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
 
   @override
   void initState() {
@@ -121,18 +124,12 @@ class _CreateEventState extends State<CreateEvent> {
                   SizedBox(
                     width: 10.w,
                   ),
-                  Text(AppLocalizations.of(context).event_date,
+                  Text(selectedDate.toString().substring(0, 10),
                       style: Theme.of(context).textTheme.displayMedium),
                   Spacer(),
                   ClickableText(
                       title: AppLocalizations.of(context).choose_date,
-                      onClick: () {
-                        showDatePicker(
-                          context: context,
-                          firstDate: DateTime.now(),
-                          lastDate: DateTime(2040),
-                        );
-                      })
+                      onClick: _chooseDate)
                 ],
               ),
               SizedBox(
@@ -147,15 +144,12 @@ class _CreateEventState extends State<CreateEvent> {
                   SizedBox(
                     width: 10.w,
                   ),
-                  Text(AppLocalizations.of(context).event_time,
+                  Text(selectedDate.toTimeFormat,
                       style: Theme.of(context).textTheme.displayMedium),
                   Spacer(),
                   ClickableText(
                       title: AppLocalizations.of(context).choose_time,
-                      onClick: () {
-                        showTimePicker(
-                            context: context, initialTime: TimeOfDay.now());
-                      })
+                      onClick: _chooseTime)
                 ],
               ),
               SizedBox(
@@ -216,5 +210,26 @@ class _CreateEventState extends State<CreateEvent> {
         ),
       ),
     );
+  }
+
+  void _chooseDate() async {
+    selectedDate = await showDatePicker(
+          context: context,
+          firstDate: DateTime.now(),
+          lastDate: DateTime.now().add(Duration(days: 365)),
+        ) ??
+        selectedDate;
+    selectedDate = selectedDate.copyWith(
+        hour: selectedTime.hour, minute: selectedTime.minute);
+    setState(() {});
+  }
+
+  void _chooseTime() async {
+    selectedTime =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now()) ??
+            selectedTime;
+    selectedDate = selectedDate.copyWith(
+        hour: selectedTime.hour, minute: selectedTime.minute);
+    setState(() {});
   }
 }

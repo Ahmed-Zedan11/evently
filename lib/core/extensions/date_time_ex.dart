@@ -5,4 +5,8 @@ extension DateTimeEx on DateTime {
     DateFormat formatter = DateFormat('MMM');
     return formatter.format(this);
   }
+
+  String get toTimeFormat {
+    return DateFormat("hh:mm").format(this);
+  }
 }
