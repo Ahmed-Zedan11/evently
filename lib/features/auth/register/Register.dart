@@ -1,3 +1,4 @@
+import 'package:evently/core/UI-utills/UI_utills.dart';
 import 'package:evently/core/resources/Assets_Manger.dart';
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/resources/validator.dart';
@@ -5,7 +6,9 @@ import 'package:evently/core/routes_manger/routes_manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
+import 'package:evently/core/widgets/flutter_toaste.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -130,8 +133,27 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  void _createAccount() {
+  void _createAccount() async {
     if (formKey.currentState?.validate() == false) return;
+
+    try {
+      UiUtills.showLoading(context);
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text);
+      UiUtills.stopLoading(context);
+      CustomFlutterToast.flutterToast(
+          message: "u registered successfully", color: Colors.green);
+      Navigator.pushReplacementNamed(context, RoutesManger.login);
+    } on FirebaseAuthException catch (exception) {
+      UiUtills.stopLoading(context);
+      CustomFlutterToast.flutterToast(
+          message: exception.code, color: ColorsManger.red);
+    } catch (exception) {
+      UiUtills.stopLoading(context);
+      CustomFlutterToast.flutterToast(
+          message: "Error while registering", color: ColorsManger.red);
+    }
   }
 
   @override

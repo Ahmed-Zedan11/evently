@@ -1,3 +1,4 @@
+import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        style: TextStyle(color: ColorsManger.black),
         maxLines: lines,
         controller: controller,
         validator: validator,

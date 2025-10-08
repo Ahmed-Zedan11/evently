@@ -1,6 +1,7 @@
 import 'package:evently/core/prefs_manager/prefs_manager.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/providers/config_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ import 'core/routes_manger/routes_manger.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PrefsManager.init;
+  await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
       create: (context) => ConfigProvider(), child: const Evently()));
 }
@@ -29,7 +31,7 @@ class Evently extends StatelessWidget {
           Locale('en'),
           Locale('ar'),
         ],
-        initialRoute: RoutesManger.mainLayout,
+        initialRoute: RoutesManger.register,
         onGenerateRoute: RoutesManger.router,
         theme: ThemeManger.light,
         darkTheme: ThemeManger.dark,
