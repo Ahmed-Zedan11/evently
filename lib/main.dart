@@ -1,6 +1,7 @@
 import 'package:evently/core/prefs_manager/prefs_manager.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/providers/config_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +32,9 @@ class Evently extends StatelessWidget {
           Locale('en'),
           Locale('ar'),
         ],
-        initialRoute: RoutesManger.register,
+        initialRoute: FirebaseAuth.instance.currentUser == null
+            ? RoutesManger.login
+            : RoutesManger.mainLayout,
         onGenerateRoute: RoutesManger.router,
         theme: ThemeManger.light,
         darkTheme: ThemeManger.dark,

@@ -1,3 +1,4 @@
+import 'package:evently/core/UI-utills/UI_utills.dart';
 import 'package:evently/core/resources/Assets_Manger.dart';
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/resources/validator.dart';
@@ -5,7 +6,9 @@ import 'package:evently/core/routes_manger/Routes_Manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
+import 'package:evently/core/widgets/flutter_toaste.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -161,8 +164,26 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  void _login() {
+  void _login() async {
     if (formKey.currentState?.validate() == false) return;
+
+    try {
+      UiUtills.showLoading(context);
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text);
+      UiUtills.stopLoading(context);
+      CustomFlutterToast.flutterToast(
+          message: "Logged in Succesfully", color: Colors.green);
+      Navigator.pushReplacementNamed(context, RoutesManger.mainLayout);
+    } on FirebaseAuthException catch (_) {
+      UiUtills.stopLoading(context);
+      CustomFlutterToast.flutterToast(
+          message: "Error with e_mail or password", color: ColorsManger.red);
+    } catch (_) {
+      CustomFlutterToast.flutterToast(
+          message: "Something went wrong", color: ColorsManger.red);
+    }
   }
 
   void _createAccount() {

@@ -1,16 +1,23 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/resources/assets_manger.dart';
+import 'package:evently/core/routes_manger/routes_manger.dart';
 import 'package:evently/features/main_layout/profile_tab/custom_drop_down.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/providers/config_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ProfileTab extends StatelessWidget {
+class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
 
+  @override
+  State<ProfileTab> createState() => _ProfileTabState();
+}
+
+class _ProfileTabState extends State<ProfileTab> {
   @override
   Widget build(BuildContext context) {
     ConfigProvider configProvider = Provider.of<ConfigProvider>(context);
@@ -98,7 +105,7 @@ class ProfileTab extends StatelessWidget {
           Padding(
             padding: REdgeInsets.only(bottom: 99),
             child: GestureDetector(
-              onTap: () {},
+              onTap: _logout,
               child: Card(
                 color: ColorsManger.red,
                 margin: REdgeInsets.symmetric(horizontal: 16, vertical: 27),
@@ -128,5 +135,10 @@ class ProfileTab extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _logout() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacementNamed(context, RoutesManger.login);
   }
 }
