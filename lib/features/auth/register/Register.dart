@@ -7,7 +7,9 @@ import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
 import 'package:evently/core/widgets/flutter_toaste.dart';
+import 'package:evently/firebase_service/firebase_service.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:evently/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -138,9 +140,12 @@ class _RegisterState extends State<Register> {
 
     try {
       UiUtills.showLoading(context);
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: _emailController.text, password: _passwordController.text);
+      UserCredential userCredential = await FireBaseService.register(
+          _emailController.text, _passwordController.text);
+      await FireBaseService.addUserToFireBase(UserModel(
+          id: userCredential.user!.uid,
+          name: _nameController.text,
+          email: _emailController.text));
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
           message: "u registered successfully", color: Colors.green);

@@ -1,5 +1,7 @@
 import 'package:evently/core/prefs_manager/prefs_manager.dart';
+import 'package:evently/firebase_service/firebase_service.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:evently/models/user_model.dart';
 import 'package:evently/providers/config_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,6 +15,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PrefsManager.init;
   await Firebase.initializeApp();
+  if (FirebaseAuth.instance.currentUser != null) {
+    UserModel.currentUser = await FireBaseService.getUserFromFireStore(
+        FirebaseAuth.instance.currentUser!.uid);
+  }
   runApp(ChangeNotifierProvider(
       create: (context) => ConfigProvider(), child: const Evently()));
 }

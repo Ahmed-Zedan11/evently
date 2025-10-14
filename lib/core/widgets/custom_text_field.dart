@@ -1,6 +1,8 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
+import 'package:evently/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class CustomTextField extends StatelessWidget {
   final IconData? prefixIconType;
@@ -27,8 +29,13 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ConfigProvider configProvider = Provider.of<ConfigProvider>(context);
+
     return TextFormField(
-        style: TextStyle(color: ColorsManger.black),
+        style: TextStyle(
+            color: configProvider.currentTheme == ThemeMode.light
+                ? ColorsManger.black
+                : ColorsManger.white),
         maxLines: lines,
         controller: controller,
         validator: validator,

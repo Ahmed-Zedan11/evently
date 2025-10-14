@@ -4,6 +4,7 @@ import 'package:evently/core/widgets/event_item.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/models/category_model.dart';
 import 'package:evently/models/event_model.dart';
+import 'package:evently/models/user_model.dart';
 import 'package:evently/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,7 +51,7 @@ class _HomeTabState extends State<HomeTab> {
                                 fontSize: 14.sp, color: ColorsManger.white),
                           ),
                           Text(
-                            "Ahmed Zedan",
+                            UserModel.currentUser!.name,
                             style: GoogleFonts.inter(
                                 fontSize: 24.sp,
                                 fontWeight: FontWeight.bold,

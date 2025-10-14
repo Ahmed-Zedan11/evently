@@ -7,7 +7,9 @@ import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
 import 'package:evently/core/widgets/flutter_toaste.dart';
+import 'package:evently/firebase_service/firebase_service.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:evently/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -169,9 +171,10 @@ class _LoginState extends State<Login> {
 
     try {
       UiUtills.showLoading(context);
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: _emailController.text, password: _passwordController.text);
+      UserCredential userCredential = await FireBaseService.login(
+          _emailController.text, _passwordController.text);
+      UserModel.currentUser =
+          await FireBaseService.getUserFromFireStore(userCredential.user!.uid);
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
           message: "Logged in Succesfully", color: Colors.green);

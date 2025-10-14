@@ -3,6 +3,7 @@ import 'package:evently/core/resources/assets_manger.dart';
 import 'package:evently/core/routes_manger/routes_manger.dart';
 import 'package:evently/features/main_layout/profile_tab/custom_drop_down.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:evently/models/user_model.dart';
 import 'package:evently/providers/config_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class _ProfileTabState extends State<ProfileTab> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Ahmed Zedan",
+                      UserModel.currentUser!.name,
                       style: GoogleFonts.inter(
                           fontSize: 24.sp,
                           fontWeight: FontWeight.bold,
@@ -63,7 +64,7 @@ class _ProfileTabState extends State<ProfileTab> {
                       height: 10.h,
                     ),
                     Text(
-                      "AhmedZedan@gmail.com",
+                      UserModel.currentUser!.email,
                       style: GoogleFonts.inter(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
