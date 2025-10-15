@@ -1,6 +1,7 @@
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/widgets/custom_tab_bar.dart';
 import 'package:evently/core/widgets/event_item.dart';
+import 'package:evently/firebase_service/firebase_service.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/models/category_model.dart';
 import 'package:evently/models/event_model.dart';
@@ -131,22 +132,31 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
         ),
-        Expanded(
-            child: Container(
-          margin: REdgeInsets.symmetric(horizontal: 16),
-          child: ListView.builder(
-            padding: REdgeInsets.only(top: 0, bottom: 100),
-            itemBuilder: (context, index) => EventItem(
-              event: EventModel(
-                  time: TimeOfDay.now(),
-                  title: "this a birthday party",
-                  description: "description",
-                  date: DateTime.now(),
-                  category: CategoryModel.categoriesWithAll(context)[1]),
-            ),
-            itemCount: 10,
-          ),
-        )),
+        FutureBuilder(
+            future: FireBaseService.getEventsFromFireStore(context),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text(snapshot.error.toString()),
+                );
+              }
+              List<EventModel> events = snapshot.data ?? [];
+              return Expanded(
+                  child: Container(
+                margin: REdgeInsets.symmetric(horizontal: 16),
+                child: ListView.builder(
+                  padding: REdgeInsets.only(top: 0, bottom: 100),
+                  itemBuilder: (context, index) =>
+                      EventItem(event: events[index]),
+                  itemCount: events.length,
+                ),
+              ));
+            })
       ],
     );
   }

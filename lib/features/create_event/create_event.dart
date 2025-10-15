@@ -1,3 +1,4 @@
+import 'package:evently/core/UI-utills/UI_utills.dart';
 import 'package:evently/core/extensions/date_time_ex.dart';
 import 'package:evently/core/resources/Assets_Manger.dart';
 import 'package:evently/core/resources/Colors_Manger.dart';
@@ -5,8 +6,12 @@ import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';
 import 'package:evently/core/widgets/custom_tab_bar.dart';
 import 'package:evently/core/widgets/custom_text_field.dart';
+import 'package:evently/core/widgets/flutter_toaste.dart';
+import 'package:evently/firebase_service/firebase_service.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:evently/models/category_model.dart';
+import 'package:evently/models/event_model.dart';
+import 'package:evently/models/user_model.dart';
 import 'package:evently/providers/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,22 +26,24 @@ class CreateEvent extends StatefulWidget {
 }
 
 class _CreateEventState extends State<CreateEvent> {
-  late final TextEditingController descriptionController;
-  late final TextEditingController titleController;
+  late final TextEditingController _descriptionController;
+  late final TextEditingController _titleController;
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
+  late CategoryModel selectedCategory =
+      CategoryModel.categoriesWithoutAll(context)[1];
 
   @override
   void initState() {
     super.initState();
-    descriptionController = TextEditingController();
-    titleController = TextEditingController();
+    _descriptionController = TextEditingController();
+    _titleController = TextEditingController();
   }
 
   @override
   void dispose() {
-    descriptionController.dispose();
-    titleController.dispose();
+    _descriptionController.dispose();
+    _titleController.dispose();
     super.dispose();
   }
 
@@ -71,6 +78,10 @@ class _CreateEventState extends State<CreateEvent> {
                 height: 16.h,
               ),
               CustomTabBar(
+                  onCategroriestabClicked: (category) {
+                    selectedCategory = category;
+                    setState(() {});
+                  },
                   selectedTabBGColor: ColorsManger.blue,
                   selectedTabFGColor:
                       configProvider.currentTheme == ThemeMode.dark
@@ -93,7 +104,7 @@ class _CreateEventState extends State<CreateEvent> {
                   prefixIconType: Icons.edit_note,
                   hintText: AppLocalizations.of(context).event_title,
                   validator: (_) {},
-                  controller: titleController),
+                  controller: _titleController),
               SizedBox(
                 height: 16.h,
               ),
@@ -107,7 +118,7 @@ class _CreateEventState extends State<CreateEvent> {
               TextFormField(
                 maxLines: 4,
                 validator: (_) {},
-                controller: descriptionController,
+                controller: _descriptionController,
                 decoration: InputDecoration(
                   hintText: AppLocalizations.of(context).event_description,
                 ),
@@ -203,7 +214,7 @@ class _CreateEventState extends State<CreateEvent> {
               ),
               ClickableButton(
                   text: AppLocalizations.of(context).add_event,
-                  onClick: () {},
+                  onClick: _addEvent,
                   color: ColorsManger.blue)
             ],
           ),
@@ -231,5 +242,22 @@ class _CreateEventState extends State<CreateEvent> {
     selectedDate = selectedDate.copyWith(
         hour: selectedTime.hour, minute: selectedTime.minute);
     setState(() {});
+  }
+
+  void _addEvent() async {
+    EventModel event = EventModel(
+        eventId: "",
+        userId: UserModel.currentUser!.id,
+        title: _titleController.text,
+        description: _descriptionController.text,
+        date: selectedDate,
+        category: selectedCategory);
+
+    UiUtills.showLoading(context);
+    await FireBaseService.addEventToFireStore(event, context);
+    UiUtills.stopLoading(context);
+    CustomFlutterToast.flutterToast(
+        message: "Event created succefully", color: Colors.green);
+    Navigator.pop(context);
   }
 }

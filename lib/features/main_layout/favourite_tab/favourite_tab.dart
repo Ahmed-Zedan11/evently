@@ -42,7 +42,8 @@ class FavouriteTab extends StatelessWidget {
             child: ListView.builder(
                 itemBuilder: (context, index) => EventItem(
                     event: EventModel(
-                        time: TimeOfDay.now(),
+                        eventId: "",
+                        userId: "",
                         title: "this a birthday party",
                         description: "description",
                         date: DateTime.now(),
