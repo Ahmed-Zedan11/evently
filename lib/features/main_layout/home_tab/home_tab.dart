@@ -21,6 +21,8 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   int selectedIndex = 0;
+  late CategoryModel selectedCategory =
+      CategoryModel.categoriesWithAll(context)[0];
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +118,10 @@ class _HomeTabState extends State<HomeTab> {
                 ),
                 SizedBox(height: 8.h),
                 CustomTabBar(
+                  onCategroriestabClicked: (category) {
+                    selectedCategory = category;
+                    setState(() {});
+                  },
                   selectedTabBGColor:
                       configProvider.currentTheme == ThemeMode.dark
                           ? ColorsManger.blue
@@ -133,7 +139,8 @@ class _HomeTabState extends State<HomeTab> {
           ),
         ),
         FutureBuilder(
-            future: FireBaseService.getEventsFromFireStore(context),
+            future: FireBaseService.getEventsFromFireStore(
+                context, selectedCategory),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
@@ -149,12 +156,25 @@ class _HomeTabState extends State<HomeTab> {
               return Expanded(
                   child: Container(
                 margin: REdgeInsets.symmetric(horizontal: 16),
-                child: ListView.builder(
-                  padding: REdgeInsets.only(top: 0, bottom: 100),
-                  itemBuilder: (context, index) =>
-                      EventItem(event: events[index]),
-                  itemCount: events.length,
-                ),
+                child: events.isEmpty
+                    ? Center(
+                        child: Text(
+                          "No events match this category",
+                          style: GoogleFonts.inter(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: ColorsManger.blue),
+                        ),
+                      )
+                    : ListView.builder(
+                        padding: REdgeInsets.only(top: 0, bottom: 100),
+                        itemBuilder: (context, index) => EventItem(
+                            favouriteEvent: UserModel
+                                .currentUser!.favouriteEventIds
+                                .contains(events[index].eventId),
+                            event: events[index]),
+                        itemCount: events.length,
+                      ),
               ));
             })
       ],

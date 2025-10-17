@@ -183,7 +183,8 @@ class _LoginState extends State<Login> {
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
           message: "Error with e_mail or password", color: ColorsManger.red);
-    } catch (_) {
+    } catch (exception) {
+      UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
           message: "Something went wrong", color: ColorsManger.red);
     }

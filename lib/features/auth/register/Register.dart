@@ -143,9 +143,11 @@ class _RegisterState extends State<Register> {
       UserCredential userCredential = await FireBaseService.register(
           _emailController.text, _passwordController.text);
       await FireBaseService.addUserToFireBase(UserModel(
-          id: userCredential.user!.uid,
-          name: _nameController.text,
-          email: _emailController.text));
+        id: userCredential.user!.uid,
+        name: _nameController.text,
+        email: _emailController.text,
+        favouriteEventIds: [],
+      ));
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
           message: "u registered successfully", color: Colors.green);
