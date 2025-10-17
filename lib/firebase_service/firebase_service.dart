@@ -42,17 +42,19 @@ class FireBaseService {
     return eventDocument.set(event);
   }
 
-  static Future<List<EventModel>> getEventsFromFireStore(
-      BuildContext context, CategoryModel category) async {
+  static Stream<List<EventModel>> getEventsFromFireStore(
+      BuildContext context, CategoryModel category) async* {
     CollectionReference<EventModel> eventsCollection =
         getEventsCollection(context);
-    QuerySnapshot<EventModel> querySnapshot = await eventsCollection
-        .where("categoryId", isEqualTo: category.id == "0" ? null : category.id)
-        .orderBy("date")
-        .get();
-    return querySnapshot.docs
+    Stream<QuerySnapshot<EventModel>> streamQuerySnapshot =
+        await eventsCollection
+            .where("categoryId",
+                isEqualTo: category.id == "0" ? null : category.id)
+            .orderBy("date")
+            .snapshots();
+    yield* streamQuerySnapshot.map((querySnapshot) => querySnapshot.docs
         .map((documentSnapshot) => documentSnapshot.data())
-        .toList();
+        .toList());
   }
 
   static CollectionReference<UserModel> getUsersCollection() {

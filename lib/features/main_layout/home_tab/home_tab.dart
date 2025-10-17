@@ -138,8 +138,8 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
         ),
-        FutureBuilder(
-            future: FireBaseService.getEventsFromFireStore(
+        StreamBuilder(
+            stream: FireBaseService.getEventsFromFireStore(
                 context, selectedCategory),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {

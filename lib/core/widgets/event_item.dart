@@ -30,9 +30,7 @@ class _EventItemState extends State<EventItem> {
         border: Border.all(width: 1.w, color: ColorsManger.blue),
         borderRadius: BorderRadius.circular(16.r),
         image: DecorationImage(
-            image: AssetImage(
-              AssetsManger.sports,
-            ),
+            image: AssetImage(widget.event.category.imagePath),
             fit: BoxFit.fill),
       ),
       child: Column(

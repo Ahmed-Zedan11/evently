@@ -31,7 +31,7 @@ class _CreateEventState extends State<CreateEvent> {
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
   late CategoryModel selectedCategory =
-      CategoryModel.categoriesWithoutAll(context)[1];
+      CategoryModel.categoriesWithoutAll(context)[0];
 
   @override
   void initState() {
@@ -70,8 +70,8 @@ class _CreateEventState extends State<CreateEvent> {
                 width: 361.w,
                 height: 203.h,
                 decoration: BoxDecoration(
-                    image:
-                        DecorationImage(image: AssetImage(AssetsManger.sports)),
+                    image: DecorationImage(
+                        image: AssetImage(selectedCategory.imagePath)),
                     borderRadius: BorderRadius.circular(16.r)),
               ),
               SizedBox(

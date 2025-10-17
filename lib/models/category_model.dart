@@ -1,3 +1,4 @@
+import 'package:evently/core/resources/assets_manger.dart';
 import 'package:evently/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -75,47 +76,47 @@ class CategoryModel {
           id: "1",
           icon: Icons.sports,
           name: AppLocalizations.of(context).sport,
-          imagePath: ""),
+          imagePath: AssetsManger.sports),
       CategoryModel(
           id: "2",
           icon: Icons.cake_rounded,
           name: AppLocalizations.of(context).birthday,
-          imagePath: ""),
+          imagePath: AssetsManger.birthDay),
       CategoryModel(
           id: "3",
           icon: Icons.meeting_room_rounded,
           name: AppLocalizations.of(context).meeting,
-          imagePath: ""),
+          imagePath: AssetsManger.meeting),
       CategoryModel(
           id: "4",
           icon: Icons.gamepad_rounded,
           name: AppLocalizations.of(context).gaming,
-          imagePath: ""),
+          imagePath: AssetsManger.gaming),
       CategoryModel(
           id: "5",
           icon: Icons.food_bank_rounded,
           name: AppLocalizations.of(context).eating,
-          imagePath: ""),
+          imagePath: AssetsManger.eating),
       CategoryModel(
           id: "6",
           icon: Icons.holiday_village_rounded,
           name: AppLocalizations.of(context).holiday,
-          imagePath: ""),
+          imagePath: AssetsManger.holiday),
       CategoryModel(
           id: "7",
           icon: Icons.water_drop_sharp,
           name: AppLocalizations.of(context).exhibition,
-          imagePath: ""),
+          imagePath: AssetsManger.exhibition),
       CategoryModel(
           id: "8",
           icon: Icons.workspaces_filled,
-          name: "Work Shop",
-          imagePath: ""),
+          name: AppLocalizations.of(context).work_shop,
+          imagePath: AssetsManger.workShop),
       CategoryModel(
           id: "9",
           icon: Icons.book,
           name: AppLocalizations.of(context).book_shop,
-          imagePath: ""),
+          imagePath: AssetsManger.bookClub),
     ];
   }
 }
