@@ -66,5 +66,21 @@
 
   "event_details": "Event Details",
   "edit_event": "Edit Event",
-  "update_event": "Update Event"
+  "update_event": "Update Event",
+
+  "enterName": "Please, enter your name",
+  "enter_email": "Please, enter your e-mail",
+  "valid_email": "Please enter a valid e-mail",
+  "enter_password": "Please, enter your Password",
+  "password_rule": "Password must be at least 6 characters, include an uppercase letter and a lowercase letter",
+  "enter_re_password": "Please, enter your Re-Password",
+  "password_mismatch": "Password doesn't match",
+  "login_success": "Logged in Successfully",
+  "login_error": "Error with e-mail or password",
+  "something_wrong": "Something went wrong",
+  "register_success": "You registered successfully",
+  "register_error": "Error while registering",
+  "event_created": "Event created successfully",
+  "no_favourites": "No favourite events yet",
+  "no_events_category": "No events match this category"
 }

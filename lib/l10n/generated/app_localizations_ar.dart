@@ -182,4 +182,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get update_event => 'تحديث الفعالية';
+
+  @override
+  String get enterName => 'من فضلك أدخل اسمك';
+
+  @override
+  String get enter_email => 'من فضلك أدخل البريد الإلكتروني';
+
+  @override
+  String get valid_email => 'من فضلك أدخل بريدًا إلكترونيًا صالحًا';
+
+  @override
+  String get enter_password => 'من فضلك أدخل كلمة المرور';
+
+  @override
+  String get password_rule => 'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل، وتشمل حرفًا كبيرًا وحرفًا صغيرًا';
+
+  @override
+  String get enter_re_password => 'من فضلك أدخل تأكيد كلمة المرور';
+
+  @override
+  String get password_mismatch => 'كلمة المرور غير متطابقة';
+
+  @override
+  String get login_success => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get login_error => 'خطأ في البريد الإلكتروني أو كلمة المرور';
+
+  @override
+  String get something_wrong => 'حدث خطأ ما';
+
+  @override
+  String get register_success => 'تم تسجيلك بنجاح';
+
+  @override
+  String get register_error => 'حدث خطأ أثناء التسجيل';
+
+  @override
+  String get event_created => 'تم إنشاء الحدث بنجاح';
+
+  @override
+  String get no_favourites => 'لا توجد فعاليات مفضلة بعد';
+
+  @override
+  String get no_events_category => 'لا توجد فعاليات تطابق هذه الفئة';
 }

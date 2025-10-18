@@ -1,40 +1,44 @@
+import 'package:evently/l10n/generated/app_localizations.dart';
+import 'package:flutter/material.dart';
+
 class Validator {
-  static String? validateName(String? value) {
+  static String? validateName(String? value, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return "Please, enter your name";
+      return AppLocalizations.of(context).enterName;
     }
     return null;
   }
 
-  static String? validateEmail(String? value) {
+  static String? validateEmail(String? value, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return "Please, enter your e-mail";
+      return AppLocalizations.of(context).enter_email;
     }
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-      return "Please enter a valid e-mail";
+      return AppLocalizations.of(context).valid_email;
     }
 
     return null;
   }
 
-  static String? validatePassword(String? value) {
+  static String? validatePassword(String? value, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return "Please, enter your Password";
+      return AppLocalizations.of(context).enter_password;
     }
     if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d!@#\$%^&*(),.?":{}|<>]{6,}$')
         .hasMatch(value)) {
-      return "Password must be at least 6 characters, include an uppercase letter and a lowercase letter";
+      return AppLocalizations.of(context).password_rule;
     }
 
     return null;
   }
 
-  static String? validateRePassword(String? value, String? password) {
+  static String? validateRePassword(
+      String? value, String? password, BuildContext context) {
     if (value == null || value.trim().isEmpty) {
-      return "Please, enter your Re-Password";
+      return AppLocalizations.of(context).enter_re_password;
     }
     if (value != password) {
-      return "Password doesn't match";
+      return AppLocalizations.of(context).password_mismatch;
     }
 
     return null;

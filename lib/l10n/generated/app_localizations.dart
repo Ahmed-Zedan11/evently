@@ -448,6 +448,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Update Event'**
   String get update_event;
+
+  /// No description provided for @enterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please, enter your name'**
+  String get enterName;
+
+  /// No description provided for @enter_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please, enter your e-mail'**
+  String get enter_email;
+
+  /// No description provided for @valid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid e-mail'**
+  String get valid_email;
+
+  /// No description provided for @enter_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Please, enter your Password'**
+  String get enter_password;
+
+  /// No description provided for @password_rule.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters, include an uppercase letter and a lowercase letter'**
+  String get password_rule;
+
+  /// No description provided for @enter_re_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Please, enter your Re-Password'**
+  String get enter_re_password;
+
+  /// No description provided for @password_mismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Password doesn\'t match'**
+  String get password_mismatch;
+
+  /// No description provided for @login_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Logged in Successfully'**
+  String get login_success;
+
+  /// No description provided for @login_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error with e-mail or password'**
+  String get login_error;
+
+  /// No description provided for @something_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get something_wrong;
+
+  /// No description provided for @register_success.
+  ///
+  /// In en, this message translates to:
+  /// **'You registered successfully'**
+  String get register_success;
+
+  /// No description provided for @register_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error while registering'**
+  String get register_error;
+
+  /// No description provided for @event_created.
+  ///
+  /// In en, this message translates to:
+  /// **'Event created successfully'**
+  String get event_created;
+
+  /// No description provided for @no_favourites.
+  ///
+  /// In en, this message translates to:
+  /// **'No favourite events yet'**
+  String get no_favourites;
+
+  /// No description provided for @no_events_category.
+  ///
+  /// In en, this message translates to:
+  /// **'No events match this category'**
+  String get no_events_category;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

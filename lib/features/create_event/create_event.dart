@@ -257,7 +257,8 @@ class _CreateEventState extends State<CreateEvent> {
     await FireBaseService.addEventToFireStore(event, context);
     UiUtills.stopLoading(context);
     CustomFlutterToast.flutterToast(
-        message: "Event created succefully", color: Colors.green);
+        message: AppLocalizations.of(context).event_created,
+        color: Colors.green);
     Navigator.pop(context);
   }
 }

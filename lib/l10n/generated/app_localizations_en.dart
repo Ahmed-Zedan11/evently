@@ -182,4 +182,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get update_event => 'Update Event';
+
+  @override
+  String get enterName => 'Please, enter your name';
+
+  @override
+  String get enter_email => 'Please, enter your e-mail';
+
+  @override
+  String get valid_email => 'Please enter a valid e-mail';
+
+  @override
+  String get enter_password => 'Please, enter your Password';
+
+  @override
+  String get password_rule => 'Password must be at least 6 characters, include an uppercase letter and a lowercase letter';
+
+  @override
+  String get enter_re_password => 'Please, enter your Re-Password';
+
+  @override
+  String get password_mismatch => 'Password doesn\'t match';
+
+  @override
+  String get login_success => 'Logged in Successfully';
+
+  @override
+  String get login_error => 'Error with e-mail or password';
+
+  @override
+  String get something_wrong => 'Something went wrong';
+
+  @override
+  String get register_success => 'You registered successfully';
+
+  @override
+  String get register_error => 'Error while registering';
+
+  @override
+  String get event_created => 'Event created successfully';
+
+  @override
+  String get no_favourites => 'No favourite events yet';
+
+  @override
+  String get no_events_category => 'No events match this category';
 }

@@ -52,14 +52,16 @@ class _LoginState extends State<Login> {
                   CustomTextField(
                     prefixIconType: Icons.email_rounded,
                     labelText: AppLocalizations.of(context).email,
-                    validator: Validator.validateEmail,
+                    validator: (input) =>
+                        Validator.validateEmail(input, context),
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(height: 16.h),
                   CustomTextField(
                     controller: _passwordController,
-                    validator: Validator.validatePassword,
+                    validator: (input) =>
+                        Validator.validatePassword(input, context),
                     isSecure: securedPassword,
                     prefixIconType: Icons.lock,
                     labelText: AppLocalizations.of(context).password,
@@ -177,16 +179,19 @@ class _LoginState extends State<Login> {
           await FireBaseService.getUserFromFireStore(userCredential.user!.uid);
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
-          message: "Logged in Succesfully", color: Colors.green);
+          message: AppLocalizations.of(context).login_success,
+          color: Colors.green);
       Navigator.pushReplacementNamed(context, RoutesManger.mainLayout);
     } on FirebaseAuthException catch (_) {
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
-          message: "Error with e_mail or password", color: ColorsManger.red);
+          message: AppLocalizations.of(context).login_error,
+          color: ColorsManger.red);
     } catch (exception) {
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
-          message: "Something went wrong", color: ColorsManger.red);
+          message: AppLocalizations.of(context).something_wrong,
+          color: ColorsManger.red);
     }
   }
 

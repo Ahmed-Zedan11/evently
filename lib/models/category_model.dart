@@ -60,7 +60,7 @@ class CategoryModel {
       CategoryModel(
           id: "8",
           icon: Icons.workspaces_filled,
-          name: "Work Shop",
+          name: AppLocalizations.of(context).work_shop,
           imagePath: ""),
       CategoryModel(
           id: "9",

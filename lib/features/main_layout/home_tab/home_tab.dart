@@ -159,7 +159,7 @@ class _HomeTabState extends State<HomeTab> {
                 child: events.isEmpty
                     ? Center(
                         child: Text(
-                          "No events match this category",
+                          AppLocalizations.of(context).no_events_category,
                           style: GoogleFonts.inter(
                               fontSize: 20.sp,
                               fontWeight: FontWeight.bold,

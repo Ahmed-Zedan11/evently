@@ -46,12 +46,11 @@ class FireBaseService {
       BuildContext context, CategoryModel category) async* {
     CollectionReference<EventModel> eventsCollection =
         getEventsCollection(context);
-    Stream<QuerySnapshot<EventModel>> streamQuerySnapshot =
-        await eventsCollection
-            .where("categoryId",
-                isEqualTo: category.id == "0" ? null : category.id)
-            .orderBy("date")
-            .snapshots();
+    Stream<QuerySnapshot<EventModel>> streamQuerySnapshot = eventsCollection
+        .where("date", isGreaterThan: Timestamp.fromDate(DateTime.now()))
+        .where("categoryId", isEqualTo: category.id == "0" ? null : category.id)
+        .orderBy("date")
+        .snapshots();
     yield* streamQuerySnapshot.map((querySnapshot) => querySnapshot.docs
         .map((documentSnapshot) => documentSnapshot.data())
         .toList());
@@ -114,5 +113,12 @@ class FireBaseService {
             UserModel.currentUser!.favouriteEventIds.contains(event.eventId))
         .toList();
     return favouriteEvents;
+  }
+
+  static Future<void> deleteEventFromFireStore(
+      EventModel event, BuildContext context) async {
+    CollectionReference<EventModel> EventsCollection =
+        getEventsCollection(context);
+    await EventsCollection.doc(event.eventId).delete();
   }
 }

@@ -58,13 +58,14 @@ class _RegisterState extends State<Register> {
                 SizedBox(height: 24.h),
                 CustomTextField(
                     controller: _nameController,
-                    validator: Validator.validateName,
+                    validator: (input) =>
+                        Validator.validateName(input, context),
                     prefixIconType: Icons.person_2_rounded,
                     labelText: AppLocalizations.of(context).name),
                 SizedBox(height: 16.h),
                 CustomTextField(
                   controller: _emailController,
-                  validator: Validator.validateEmail,
+                  validator: (input) => Validator.validateEmail(input, context),
                   prefixIconType: Icons.email_rounded,
                   labelText: AppLocalizations.of(context).email,
                   keyboardType: TextInputType.emailAddress,
@@ -72,7 +73,8 @@ class _RegisterState extends State<Register> {
                 SizedBox(height: 16.h),
                 CustomTextField(
                   controller: _passwordController,
-                  validator: Validator.validatePassword,
+                  validator: (input) =>
+                      Validator.validatePassword(input, context),
                   isSecure: securedPassword,
                   prefixIconType: Icons.lock,
                   labelText: AppLocalizations.of(context).password,
@@ -90,7 +92,7 @@ class _RegisterState extends State<Register> {
                 CustomTextField(
                   controller: _rePasswordController,
                   validator: (input) => Validator.validateRePassword(
-                      input, _passwordController.text),
+                      input, _passwordController.text, context),
                   isSecure: securedRePassword,
                   prefixIconType: Icons.lock,
                   labelText: AppLocalizations.of(context).re_password,
@@ -150,7 +152,8 @@ class _RegisterState extends State<Register> {
       ));
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
-          message: "u registered successfully", color: Colors.green);
+          message: AppLocalizations.of(context).register_success,
+          color: Colors.green);
       Navigator.pushReplacementNamed(context, RoutesManger.login);
     } on FirebaseAuthException catch (exception) {
       UiUtills.stopLoading(context);
@@ -159,7 +162,8 @@ class _RegisterState extends State<Register> {
     } catch (exception) {
       UiUtills.stopLoading(context);
       CustomFlutterToast.flutterToast(
-          message: "Error while registering", color: ColorsManger.red);
+          message: AppLocalizations.of(context).register_error,
+          color: ColorsManger.red);
     }
   }
 
