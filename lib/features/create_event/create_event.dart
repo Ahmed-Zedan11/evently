@@ -1,6 +1,5 @@
 import 'package:evently/core/UI-utills/UI_utills.dart';
 import 'package:evently/core/extensions/date_time_ex.dart';
-import 'package:evently/core/resources/Assets_Manger.dart';
 import 'package:evently/core/resources/Colors_Manger.dart';
 import 'package:evently/core/widgets/clickable_button.dart';
 import 'package:evently/core/widgets/clickable_text.dart';

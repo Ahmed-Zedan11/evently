@@ -10,10 +10,10 @@ class ThemeManger {
           primary: ColorsManger.black, secondary: ColorsManger.white),
       floatingActionButtonTheme:
           FloatingActionButtonThemeData(backgroundColor: ColorsManger.blue),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: ColorsManger.white,
       ),
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         color: ColorsManger.blue,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -97,10 +97,10 @@ class ThemeManger {
           primary: ColorsManger.white, secondary: ColorsManger.black),
       floatingActionButtonTheme:
           FloatingActionButtonThemeData(backgroundColor: ColorsManger.darkBlue),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: ColorsManger.darkBlue,
       ),
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         color: ColorsManger.darkBlue,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

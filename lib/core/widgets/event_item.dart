@@ -1,6 +1,5 @@
 import 'package:evently/core/extensions/date_time_ex.dart';
 import 'package:evently/core/resources/Colors_Manger.dart';
-import 'package:evently/core/resources/assets_manger.dart';
 import 'package:evently/firebase_service/firebase_service.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:flutter/material.dart';
